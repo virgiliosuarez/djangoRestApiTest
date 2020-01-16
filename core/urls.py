@@ -13,11 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from core.views.countryViews import CountryViews
 from django.urls import path
 
+from core.views.UserProfileView import UserProfileListCreateView, userProfileDetailView
+from core.views.countryView import CountryListCreateView, CountryDetailDestroyUpdateView
+
 urlpatterns = [
-    path('country/', CountryViews.country_list_create, name='country_list_create'),
-    path('country_paginate/', CountryViews.country_list_paginate, name='country_list_paginate'),
-    path('country/<int:pk>/', CountryViews.country_detail, name='country_detail'),
+    # gets all user profiles and create a new profile
+    path("all-profiles", UserProfileListCreateView.as_view(), name="all-profiles"),
+    # retrieves profile details of the currently logged in user
+    path("profile/<int:pk>", userProfileDetailView.as_view(), name="profile"),
+
+    path('country', CountryListCreateView.as_view(), name='country_list_create'),
+    path('country/<int:pk>', CountryDetailDestroyUpdateView.as_view(), name='country_detail'),
 ]
