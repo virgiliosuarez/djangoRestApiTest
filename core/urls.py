@@ -15,15 +15,20 @@ Including another URLconf
 """
 from django.urls import path
 
-from core.views.UserProfileView import UserProfileListCreateView, userProfileDetailView
+from core.views.companyView import CompanyListCreateView, CompanyDetailDestroyUpdateView
 from core.views.countryView import CountryListCreateView, CountryDetailDestroyUpdateView
+from core.views.userProfileView import UserProfileListCreateView, UserProfileDetailView
 
 urlpatterns = [
-    # gets all user profiles and create a new profile
+    # path to profiles end points
     path("all-profiles", UserProfileListCreateView.as_view(), name="all-profiles"),
-    # retrieves profile details of the currently logged in user
-    path("profile/<int:pk>", userProfileDetailView.as_view(), name="profile"),
+    path("profile/<int:pk>", UserProfileDetailView.as_view(), name="profile"),
 
+    # path to country end points
     path('country', CountryListCreateView.as_view(), name='country_list_create'),
-    path('country/<int:pk>', CountryDetailDestroyUpdateView.as_view(), name='country_detail'),
+    path('country/<int:pk>', CountryDetailDestroyUpdateView.as_view(), name='country_detail_destroy_update'),
+
+    # path to company end points
+    path('company', CompanyListCreateView.as_view(), name='company_list_create'),
+    path('company/<int:pk>', CompanyDetailDestroyUpdateView.as_view(), name='company_detail_destroy_update'),
 ]

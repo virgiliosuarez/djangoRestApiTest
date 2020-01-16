@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path to backend end points
+    path('admin/', admin.site.urls, name='backend'),
 
     # path to djoser end points
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
+    path('auth/', include('djoser.urls'), name='djoser'),
+    path('auth/', include('djoser.urls.jwt'), name='djoser_jwt'),
 
     # path to core end points
-    path('', include('core.urls')),
+    path('core/', include('core.urls'), name='plugin_core'),
 ]
