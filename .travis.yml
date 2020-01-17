@@ -17,6 +17,4 @@ before_install:
 - docker-compose ps
 
 script:
-- scripts/pylint.sh
-- scripts/pycodestyle.sh
-- scripts/tests.sh
+python manage.py test
