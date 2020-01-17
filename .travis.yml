@@ -15,3 +15,6 @@ before_install:
 - docker-compose pull
 - docker-compose up -d redis
 - docker-compose ps
+
+script:
+python manage.py test
