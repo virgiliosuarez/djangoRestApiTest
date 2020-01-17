@@ -16,9 +16,6 @@ before_install:
 - docker-compose up -d redis
 - docker-compose ps
 
-install:
-- pip install -r requirements/testing_dev.txt
-
 script:
 - scripts/pylint.sh
 - scripts/pycodestyle.sh
