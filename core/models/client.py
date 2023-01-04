@@ -14,6 +14,6 @@ class Client(models.Model):
     country = models.ForeignKey(Country, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.name + self.email
 
 
