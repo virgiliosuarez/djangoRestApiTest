@@ -9,9 +9,11 @@ class CountryListCreateView(ListCreateAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
     permission_classes = [IsAuthenticated]
+    
 
 
 class CountryDetailDestroyUpdateView(RetrieveUpdateDestroyAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
     permission_classes = [IsAuthenticated]
+    
